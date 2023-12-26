@@ -5,8 +5,8 @@
 int main() {
 
     //Gas station
-    vector<int> gas = {1, 2, 3, 4, 5};
-    vector<int> cost = {3, 4, 5, 1, 2};
+    vector<int> gas = {2, 3, 4};
+    vector<int> cost = {3, 4, 3};
     cout << "GAS STATION" << endl;
     cout << "Solution: " << Solutions::canCompleteCircuit(gas, cost) << endl;
     cout << endl;

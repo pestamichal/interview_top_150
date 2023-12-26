@@ -123,23 +123,33 @@ vector<int> Solutions::productExceptSelf(vector<int> &nums) {
 }
 
 int Solutions::canCompleteCircuit(vector<int> &gas, vector<int> &cost) {
-    int startIndex = -1;
-    int tank = 0;
+    int startIndex = -1, index = 0, tank;
     int size = gas.size();
 
     for(int i = 0; i < size; i++){
         if(startIndex == -1 && gas[i] >= cost[i]){
             startIndex = i;
             tank = gas[i] - cost[i];
-        }else if(tank < cost[i]){
-            startIndex = -1;
-            tank = 0;
+        }else if(startIndex != -1){
+            tank += gas[i] - cost[i];
+            if(tank < 0){
+                startIndex = -1;
+                tank = 0;
+            }
         }
+        index = i;
     }
     if(startIndex == -1) return startIndex;
+    index = (index + 1) % size;
+    while(index != startIndex){
 
-    for(int i = startIndex; i < (startIndex - 1) % size; i++){
+        tank += gas[index] - cost[index];
+        if(tank < 0){
+            startIndex = -1;
+            break;
+        }
 
+        index = (index + 1) % size;
     }
 
     return startIndex;
