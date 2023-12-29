@@ -1,4 +1,5 @@
 #include "Solutions.h"
+#include <iostream>
 
 
 int Solutions::removeDuplicates(vector<int> &nums) {
@@ -153,6 +154,29 @@ int Solutions::canCompleteCircuit(vector<int> &gas, vector<int> &cost) {
     }
 
     return startIndex;
+}
+
+int Solutions::candy(vector<int> &ratings) {
+
+    int size = ratings.size();
+    vector<int> candy(size, 1);
+
+    for(int i = 1; i < size; ++i){
+        if(ratings[i] > ratings[i - 1]){
+            candy[i] = candy[i - 1] + 1;
+        }
+    }
+    for(int i = size - 2; i >= 0; --i){
+        if(ratings[i] > ratings[i + 1]){
+            candy[i] = std::max(candy[i], candy[i + 1] + 1);
+        }
+    }
+
+    int candyCount = 0;
+    for(int c : candy){
+        candyCount += c;
+    }
+    return candyCount;
 }
 
 
