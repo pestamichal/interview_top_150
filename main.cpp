@@ -14,8 +14,13 @@ int main() {
     //Candy - HARD
     vector<int> ratings = {1,6,10,8,7,3,2};
     cout << "CANDY" << endl;
-//    cout << "Solution: " << Solutions::candy(ratings) << endl;
-    Solutions::candy(ratings);
+    cout << "Solution: " << Solutions::candy(ratings) << endl;
+    cout << endl;
+
+    //Trapping Rain Water - HARD
+    vector<int> height = {2, 0, 2};
+    cout << "TRAPPING RAIN WATER" << endl;
+    cout << "Solution: " << Solutions::trap(height) << endl;
     cout << endl;
 
     return 0;

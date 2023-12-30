@@ -179,4 +179,34 @@ int Solutions::candy(vector<int> &ratings) {
     return candyCount;
 }
 
+int Solutions::trap(vector<int> &height) {
+
+    int size = height.size();
+    int rain = 0, tempRain = 0, wall = 0;
+
+    for(int i = 0; i < size; i++){
+        if(height[i] >= wall){
+            rain += tempRain;
+            tempRain = 0;
+            wall = height[i];
+        }
+        else if(wall > 0){
+            tempRain += wall - height[i];
+        }
+    }
+    wall = 0;
+    tempRain = 0;
+    for(int i = size - 1; i >= 0; i--){
+        if(height[i] > wall){
+            rain += tempRain;
+            tempRain = 0;
+            wall = height[i];
+        }
+        else if(wall > 0){
+            tempRain += wall - height[i];
+        }
+    }
+    return rain;
+}
+
 

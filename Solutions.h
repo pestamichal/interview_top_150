@@ -16,6 +16,7 @@ public:
     static vector<int> productExceptSelf(vector<int>& nums); //Product of Array Except Self
     static int canCompleteCircuit(vector<int>& gas, vector<int>& cost); //Gas Station
     static int candy(vector<int>& ratings); //Candy
+    static int trap(vector<int>& height); //Trapping Rain Water
 };
 
 
