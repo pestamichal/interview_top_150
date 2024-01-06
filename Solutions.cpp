@@ -210,3 +210,90 @@ int Solutions::trap(vector<int> &height) {
 }
 
 
+string Solutions::longestCommonPrefix(vector<string> &strs) {
+
+    string prefix = strs[0];
+    string result;
+    int n = strs.size();
+    for(int i = 1;i < n; i++){
+        result = "";
+        for(int j = 0; j < strs[i].length(); j++){
+            if(strs[i][j] == prefix[j]){
+                result += prefix[j];
+            }else{
+                break;
+            }
+        }
+        prefix = result;
+        if(prefix.empty()){
+            return prefix;
+        }
+    }
+
+    return prefix;
+}
+
+string Solutions::reverseWords(string s) {
+
+    string result, word;
+    int n = s.length();
+    for(int i = n - 1;i >= 0; i--){
+        if(s[i] == ' ' && !word.empty()){
+            result += word;
+            result += " ";
+            word = "";
+        }else if(s[i] != ' '){
+            word = s[i] + word;
+        }
+    }
+    if(!word.empty()) result += word;
+    if(result[result.length() - 1] == ' ') result.pop_back();
+
+    return result;
+}
+
+string Solutions::convert(string s, int numRows) {
+
+    if (numRows == 1 || s.length() <= numRows) {
+        return s;
+    }
+
+    vector<string> zigzag(numRows, "");
+    int row = 0;
+    int step = 1;
+
+    for (char c : s) {
+        zigzag[row].push_back(c);
+
+        if (row == 0) {
+            step = 1;
+        } else if (row == numRows - 1) {
+            step = -1;
+        }
+
+        row += step;
+    }
+
+    string result;
+    for (const string& str : zigzag) {
+        result += str;
+    }
+
+    return result;
+}
+
+int Solutions::strStr(string haystack, string needle) {
+    if(haystack.length() < needle.length()) return -1;
+
+    for(int i = 0; i < haystack.length(); i++){
+        int index = 0;
+        while(haystack[i + index] == needle[index] && index < needle.length() && index + i < haystack.length()){
+            index++;
+        }
+        if(index == needle.length()){
+            return i;
+        }
+    }
+
+    return -1;
+}

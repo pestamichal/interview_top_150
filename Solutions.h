@@ -2,6 +2,7 @@
 #define INTERVIEW_TOP_150_SOLUTIONS_H
 
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -17,6 +18,10 @@ public:
     static int canCompleteCircuit(vector<int>& gas, vector<int>& cost); //Gas Station
     static int candy(vector<int>& ratings); //Candy
     static int trap(vector<int>& height); //Trapping Rain Water
+    static string longestCommonPrefix(vector<string>& strs); //Longest Common Prefix
+    static string reverseWords(string s); //Reverse Words in a String
+    static string convert(string s, int numRows); //Zigzag Conversion
+    static int strStr(string haystack, string needle); //Find the Index of the First Occurrence in a String
 };
 
 
